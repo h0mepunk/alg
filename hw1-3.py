@@ -11,7 +11,7 @@ y2 = int(input('Введите y2 - координату y второй точк
 k_ups = y2 - y1
 k_downs = x2 - x1
 k = k_ups / k_downs
-b = x1 * k_ups / k_downs + y1
+b = x1 * k_ups / k_downs + y1 * (y2-y1)
 
-print('Уравнение прямой в дробном виде: у = (', k_ups, '/', k_downs, ')x +', x1 * k_ups, '/', k_downs, '+', y1)
+print('Уравнение прямой в дробном виде: у = (', k_ups, '/', k_downs, ')x +', x1 * k_ups, '/', k_downs, '+',  y1 * (y2-y1))
 print('Уравнение прямой в виде коэффициентов с запятой: у =', k, 'x + ', b)
