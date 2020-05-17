@@ -10,4 +10,5 @@ def upside_down(a):
     else:
         return f'{a % 10}{upside_down(a // 10)}'
 
+
 print(upside_down(num))

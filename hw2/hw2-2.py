@@ -20,4 +20,4 @@ else:
     uneven += 1
     num = num // 10
 
-print(even, ' ', uneven)
+print('Четных: ', even, ' Нечетных: ', uneven)
