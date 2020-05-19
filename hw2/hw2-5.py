@@ -6,13 +6,12 @@ n = 0
 for i in range(32, 128, 1):
     if n <= 9:
         sys.stdout.write('{} {} '.format(i, chr(i)))
-        n += n
+        n += 1
         i += i
     else:
         n = 0
         print('\n')
-    #    n = 0
-    # sys.stdout.write(i, chr(i), ' ,')
+
 
 
 
