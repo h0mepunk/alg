@@ -5,8 +5,24 @@
 import random
 
 SIZE = 10
-MIN_ITEM = 0
+MIN_ITEM = -100
 MAX_ITEM = 100
 array = [random.randint(MIN_ITEM, MAX_ITEM) for _ in range(SIZE)]
 print(array)
 
+neg_ = []
+
+for _ in range(0, SIZE):
+    if array[_] < 0:
+        neg_.append(array[_])
+    _ += 1
+
+print(neg_)
+
+max_neg_ = neg_[0]
+for _ in range(0, len(neg_)):
+    if max_neg_ < neg_[_]:
+        max_neg_ = neg_[_]
+    _ += 1
+
+print(max_neg_)
