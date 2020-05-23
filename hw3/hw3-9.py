@@ -19,10 +19,10 @@ for i in range(1, SIZE_A):
         j += 1
     i += 1
 
-min_ = min_el[0]
+max_ = min_el[0]
 for _ in range(SIZE_A):
-    if min_ > min_el[_]:
-        min_ = min_el[_]
+    if max_ < min_el[_]:
+        max_ = min_el[_]
     _ += _
 
-print(min_)
+print(max_)
