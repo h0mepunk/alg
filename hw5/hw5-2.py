@@ -8,22 +8,22 @@ print('Для ввода чисел 0т 10 до 15, пожалуйста, исп
 A = deque(input('Введите первое 16-ричное число '))
 B = deque(input('Введите второе 16-ричное число '))
 
-hex_to_dec = {'1': '1', '2': '2', '3': '3', '4': '4', '5': '5', '6': '6', '7': '7', '8': '8', '9': '9', 'A': '10',
-              'B': '11', 'C': '12', 'D': '13', 'E': '14', 'F': '15'}
-dec_to_hex = {'1': '1', '2': '2', '3': '3', '4': '4', '5': '5', '6': '6', '7': '7', '8': '8', '9': '9', '10': 'A',
-              '11': 'B', '12': 'C', '13': 'D', '14': 'E', '15': 'F'}
+dec_to_hex = {'1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, 'A': 10,
+              'B': 11, 'C': 12, 'D': 13, 'E': 14, 'F': 15}
+hex_to_dec = {1: '1', 2: '2', 3: '3', 4: '4', 5: '5', 6: '6', 7: '7', 8: '8', 9: '9', 10: 'A',
+              11: 'B', 12: 'C', 13: 'D', 14: 'E', 15: 'F'}
 
 
 def normalization_to_dec(num):
     for i in range(0, len(num)):
-        num[i] = hex((num[i]))
+        num[i] = dec_to_hex[num[i]]
         i += 1
     return num
 
 
 def denormalization_to_hex(num):
     for i in range(0, len(num)):
-        num[i] = int(num[i])
+        num[i] = hex_to_dec[num[i]]
         i += 1
     return num
 
@@ -34,6 +34,7 @@ print(denormalization_to_hex(A))
 print(B)
 print(normalization_to_dec(B))
 print(denormalization_to_hex(B))
+
 
 
 
