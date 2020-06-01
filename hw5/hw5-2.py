@@ -30,56 +30,54 @@ def denormalization_to_hex(num):
     return num
 
 
-# def max_len(num1: deque,  num2: deque):
-    #     if len(num1) > len(num2):
-    #         return 0
-    # else:
-    #     num1, num2 = num2, num1
-#     return len(num1)
-
-sum_a_b = []
+sum_a_b = deque([])
 buf = 0
-# max_len(A, B)
 A = normalization_to_dec(A)
+# print(A)
 B = normalization_to_dec(B)
+# print(B)
 
 
-def sum_(num1: deque, num2: deque, buf, sum_ab):
-    for i in range(len(num1), 1, -1):
+def sum_(num1: deque, num2: deque, buf, sum_a_b):
         if num1:
             a = num1.pop()
             if num2:
                 b = num2.pop()
-                if a + b > 15:
-                    sum_a_b.append(15)
-                    buf = a + b - 15
+                if a + b + buf > 16:
+                    sum_a_b.appendleft(a + b + buf - 16)
+                    buf = 1
                     sum_(num1, num2, buf, sum_a_b)
                 else:
-                    sum_a_b.append(a + b)
+                    sum_a_b.appendleft(a + b + buf)
+                    buf = 0
                     sum_(num1, num2, buf, sum_a_b)
             else:
-                sum_a_b.append(a + buf)
-                buf = 0
-                sum_(num1, num2, buf, sum_a_b)
+                if a + buf > 16:
+                    sum_a_b.appendleft(a + buf - 16)
+                    buf = 1
+                    sum_(num1, num2, buf, sum_a_b)
+                else:
+                    sum_a_b.appendleft(a + buf)
+                    buf = 0
+                    sum_(num1, num2, buf, sum_a_b)
         else:
             if num2:
                 b = num2.pop()
-                sum_a_b.append(b + buf)
-                buf = 0
-                sum_(num1, num2, buf, sum_a_b)
+                if b + buf > 16:
+                    sum_a_b.appendleft(b + buf - 16)
+                    buf = 1
+                    sum_(num1, num2, buf, sum_a_b)
+                else:
+                    sum_a_b.appendleft(b + buf)
+                    buf = 0
+                    sum_(num1, num2, buf, sum_a_b)
             else:
-                return sum_a_b
+                return sum_a_b.appendleft(buf)
 
 
 sum_(A, B, 0, sum_a_b)
 
-
-print(A)
-# print(normalization_to_dec(A))
-# print(denormalization_to_hex(A))
-print(B)
-# print(normalization_to_dec(B))
-# print(denormalization_to_hex(B))
+print(sum_a_b)
 print(denormalization_to_hex(sum_a_b))
 
 
