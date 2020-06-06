@@ -6,3 +6,11 @@
 # Но если это слишком сложно, используйте метод сортировки,
 # который не рассматривался на уроках (сортировка слиянием также недопустима).
 
+import random
+
+SIZE = 10
+MIN_ITEM = 0.0
+MAX_ITEM = 49.0
+
+array = [random.uniform(MIN_ITEM, MAX_ITEM) for _ in range(SIZE)]
+print(array)
