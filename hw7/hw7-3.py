@@ -14,6 +14,9 @@ MAX_ITEM = 49.0
 
 array = [random.randint(MIN_ITEM, MAX_ITEM) for _ in range(SIZE)]
 print(array)
+# test_array_with_med = [0, 0, 0, 0, 1, 4, 4, 4, 4]
+# test_array_with_med_2 = [1, 0, 0, 0, 0, 0, 0]
+# test_array_with_med_3 = [0, 0, 0, 0, 0, 0, 1]
 
 
 def med_search(a: array):
@@ -48,4 +51,5 @@ def med_search(a: array):
 
 
 print(med_search(array))
+# print(med_search(test_array_with_med_2))
 
