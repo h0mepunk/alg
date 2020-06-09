@@ -25,9 +25,13 @@ def count_(s):
                 j += 1
         arr.append([i, counter])
         counter = 0
+
+    arr.sort(key=sort_arr)
     return arr
 
 
+def sort_arr(a):
+    return a[1]
 
 def hffmn(s):
     h_tree = Tree()
