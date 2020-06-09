@@ -1,5 +1,6 @@
 # Закодируйте любую строку по алгоритму Хаффмана.
-from tkinter.tix import Tree
+from collections import deque
+from binarytree import tree, bst, Node
 
 str_ = input('Введите строку: ')
 
@@ -33,8 +34,29 @@ def count_(s):
 def sort_arr(a):
     return a[1]
 
+
+class MyNode:
+    def __init__(self, value, left=None, right=None, data=None):
+        self.data = data
+        self.value = value
+        self.left = left
+        self.right = right
+
 def hffmn(s):
-    h_tree = Tree()
+    h_tree = tree()
+    q = deque(s)
+    res = deque()
+    while q:
+        temp = q.popleft()
+        h_tree.left = temp
+        h_tree.cargo = temp[1]
+        temp = q.popleft()
+        h_tree.right = temp
+        h_tree.cargo += temp[1]
+        res.addleft(h_tree)
+
+    return res
 
 
 print(count_(str_))
+print(hffmn(count_(str_)))
