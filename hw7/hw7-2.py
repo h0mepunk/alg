@@ -33,7 +33,7 @@ def merge_array(l: array, r: array):
 def write_buf_to_a(first: int, num: int, buf: array, a: array):
     iter = 0
     for i in range(0, num):
-        a[i + first] = buf.pop(i - iter)
+         a[i + first] = buf.pop(i - iter)
         i += 1
         iter += 1
 
