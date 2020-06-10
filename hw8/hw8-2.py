@@ -3,6 +3,8 @@ from collections import deque
 from binarytree import tree, bst, Node
 
 str_ = input('Введите строку: ')
+result = []
+
 
 class MyNode:
     def __init__(self, value, left=None, right=None, data=None):
@@ -10,6 +12,7 @@ class MyNode:
         self.value = value
         self.left = left
         self.right = right
+
 
 def count_(s):
     set_of_letters = set()
@@ -19,8 +22,6 @@ def count_(s):
         else:
             set_of_letters.add(s[i])
             i += 1
-
-    print(set_of_letters)
     arr = []
     counter = 0
     for i in set_of_letters:
@@ -32,9 +33,7 @@ def count_(s):
                 j += 1
         arr.append(MyNode(data=i, value=counter))
         counter = 0
-
     arr.sort(key=sort_arr)
-    #     arr = deque(arr)
     return arr
 
 
@@ -57,16 +56,24 @@ def hffmn(s):
                 s[n], s[i] = s[i], s[n]
             n = i
             i += 1
-    return s
+    return s[0]
 
 
-#def code_table_count(tree, prev_branch, path=''):
-#    if
+def code_table_count(tree, path):
+    if tree == None:
+        return result
+    code_table_count(tree.left, path=path + "0")
+    code_table_count(tree.right, path=path + "1")
+    if tree.data != None:
+        result.append([tree.data, path])
+
+def
 
 
 count_letters = count_(str_)
 code_tree = hffmn(count_letters)
-#code_table = code_table_count()
-
-print(count_(str_))
-print(hffmn(count_(str_)))
+code_table = code_table_count(code_tree, '')
+print(result)
+# print(code_table_count(hffmn(count_(str_)), ''))
+# print(count_(str_))
+# print(hffmn(count_(str_)))
