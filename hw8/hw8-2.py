@@ -4,6 +4,12 @@ from binarytree import tree, bst, Node
 
 str_ = input('Введите строку: ')
 
+class MyNode:
+    def __init__(self, value, left=None, right=None, data=None):
+        self.data = data
+        self.value = value
+        self.left = left
+        self.right = right
 
 def count_(s):
     set_of_letters = set()
@@ -24,39 +30,43 @@ def count_(s):
                 j += 1
             else:
                 j += 1
-        arr.append([i, counter])
+        arr.append(MyNode(data=i, value=counter))
         counter = 0
 
     arr.sort(key=sort_arr)
+    #     arr = deque(arr)
     return arr
 
 
-def sort_arr(a):
-    return a[1]
+def sort_arr(a: MyNode):
+    return a.value
 
-
-class MyNode:
-    def __init__(self, value, left=None, right=None, data=None):
-        self.data = data
-        self.value = value
-        self.left = left
-        self.right = right
 
 def hffmn(s):
-    h_tree = tree()
-    q = deque(s)
-    res = deque()
-    while q:
-        temp = q.popleft()
-        h_tree.left = temp
-        h_tree.cargo = temp[1]
-        temp = q.popleft()
-        h_tree.right = temp
-        h_tree.cargo += temp[1]
-        res.addleft(h_tree)
+    while len(s) > 1:
+        temp_l = s[0]
+        temp_r = s[1]
+        buf = MyNode(data=None, value=temp_r.value + temp_l.value)
+        buf.left = temp_l
+        buf.right = temp_r
+        s[1] = buf
+        del s[0]
+        n = 0
+        for i in range(1, len(s)):
+            if s[n].value >= s[i].value:
+                s[n], s[i] = s[i], s[n]
+            n = i
+            i += 1
+    return s
 
-    return res
 
+#def code_table_count(tree, prev_branch, path=''):
+#    if
+
+
+count_letters = count_(str_)
+code_tree = hffmn(count_letters)
+#code_table = code_table_count()
 
 print(count_(str_))
 print(hffmn(count_(str_)))
