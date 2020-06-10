@@ -4,6 +4,7 @@ from binarytree import tree, bst, Node
 
 str_ = input('Введите строку: ')
 result = []
+output = ''
 
 
 class MyNode:
@@ -41,7 +42,7 @@ def sort_arr(a: MyNode):
     return a.value
 
 
-def hffmn(s):
+def hffmn_tree(s):
     while len(s) > 1:
         temp_l = s[0]
         temp_r = s[1]
@@ -67,13 +68,17 @@ def code_table_count(tree, path):
     if tree.data != None:
         result.append([tree.data, path])
 
-def
+
+def hffmn_encode_string(s):
+    res_str = ''
+    code_table_count(hffmn_tree(count_(str_)), '')
+
+    for i in range(0, len(s)):
+        for j in range(0, len(result)):
+            if s[i] == result[j][0]:
+                res_str += result[j][1]
+    return res_str
 
 
-count_letters = count_(str_)
-code_tree = hffmn(count_letters)
-code_table = code_table_count(code_tree, '')
-print(result)
-# print(code_table_count(hffmn(count_(str_)), ''))
-# print(count_(str_))
-# print(hffmn(count_(str_)))
+print(hffmn_encode_string(str_))
+
