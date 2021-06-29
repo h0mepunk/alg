@@ -27,7 +27,6 @@ def med_search(a: array):
     if all(el > a[0] for el in set(a[0: SIZE -1])) or all(el < a[0] for el in set(a[0: SIZE - 1])):
         flag_med_found = True
         return a[SIZE]
-
     for i in range(1, SIZE - 1):
         right = set(a[i + 1: SIZE])
         left = set(a[0: i - 1])
